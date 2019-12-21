@@ -1,9 +1,5 @@
 package val.shlang;
 
-import val.shlang.Demo.Demo;
-
-import java.util.Comparator;
-
 public class Main {
 
     private static Demo demo;

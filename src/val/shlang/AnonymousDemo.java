@@ -1,15 +1,13 @@
 package val.shlang;
 
-import val.shlang.Demo.Demo;
+import val.shlang.Demo;
 
-public class AnonymousDemo implements Demo {
+public class AnonymousDemo extends Demo {
 
     interface Greeting{void greet();}
 
     @Override
-    public void run() {
-        System.out.println("+++++++++++AnonymousDemo++++++++++");
-
+    public void demo() {
         //anonymous interface implementation
         Greeting greeting = new Greeting() {
             @Override
@@ -29,7 +27,5 @@ public class AnonymousDemo implements Demo {
         };
 
         System.out.println(o);
-
-        System.out.println("+++++++++++END_OF AnonymousDemo++++++++++");
     }
 }
