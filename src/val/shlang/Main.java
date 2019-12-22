@@ -1,13 +1,14 @@
 package val.shlang;
 
-public class Main {
+import java.util.Arrays;
 
-    private static Demo demo;
+public class Main {
 
     public static void main(String[] args) {
 
-        demo = new AnonymousDemo();
-        demo.run();
+        Demo[] demos = {new AnonymousDemo(),
+                        new ExceptionDemo()};
 
+        Arrays.stream(demos).forEach(Demo::run);
     }
 }
