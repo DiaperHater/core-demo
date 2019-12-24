@@ -1,8 +1,11 @@
 package val.shlang;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,6 +22,44 @@ public class FileHandlingDemo extends Demo {
         fileInOutStreamDemo();
         dataInOutStream();
         randomAccessFileDemo();
+        fileChannelDemo();
+        nioFilesDemo();
+    }
+
+    private void nioFilesDemo() {
+        Path path = createTmpFile();
+
+        try{
+            Files.write(path, "nioFilesDemo()".getBytes());
+            String line = Files.readString(path);
+            System.out.println(line + OK_POSTFIX);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+    }
+
+    private void fileChannelDemo() {
+        Path path = createTmpFile();
+        try {
+            RandomAccessFile raf = new RandomAccessFile(path.toFile(), "rw");
+            FileChannel channel = raf.getChannel();
+            String value = "fileChannelDemo";
+            byte[] bytes = value.getBytes();
+            ByteBuffer buffer = ByteBuffer.allocate(bytes.length);
+            buffer.put(bytes);
+            buffer.flip();
+            channel.write(buffer);
+            raf.close();
+            channel.close();
+
+            Scanner scanner = new Scanner(new FileInputStream(path.toFile()));
+            String line = scanner.hasNextLine() ? scanner.nextLine() + OK_POSTFIX :"";
+            System.out.println(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 
     private void randomAccessFileDemo() {
