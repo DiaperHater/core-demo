@@ -2,7 +2,7 @@ package val.shlang;
 
 public abstract class Demo {
 
-    public abstract void demo();
+    protected abstract void demo();
 
     public void run(){
         System.out.println("++++++++++++"+ this.getClass().getSimpleName() +"++++++++++++++++");

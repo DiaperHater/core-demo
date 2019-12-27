@@ -8,7 +8,8 @@ public class Main {
 
         Demo[] demos = {new AnonymousDemo(),
                         new ExceptionDemo(),
-                        new FileHandlingDemo()};
+                        new FileHandlingDemo(),
+                        new DateTimeDemo()};
 
         Arrays.stream(demos).forEach(Demo::run);
     }
