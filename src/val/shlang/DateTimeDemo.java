@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalUnit;
 
 public class DateTimeDemo extends Demo {
     @Override
@@ -12,6 +13,9 @@ public class DateTimeDemo extends Demo {
         LocalDateTime time = LocalDateTime.now();
         System.out.println(time);
 
+        time = time.plusDays(33);
+        System.out.println("+ 33 days = " + time);
+        
         //timezone
         ZonedDateTime zoned = ZonedDateTime.now(ZoneId.of("GMT-5"));
         //equals to:
